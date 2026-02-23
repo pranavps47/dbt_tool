@@ -9,17 +9,18 @@ https://grouplens.org/datasets/movielens/20m/
 The dataset has been uploaded to the following S3 bucket:
 
 s3://netflixmoviedatacsv/
+
+
 2. Snowflake Prerequisites
 
 Before loading the data, run the prerequisite SQL commands in Snowflake to:
 
 Create a new user
-
 Create a new database
-
 Create a new schema
 
 These steps prepare the Snowflake environment for this project.
+refer to :snowflake_prereq_commands.sql
 
 3. AWS Configuration
 Option 1 – Using AWS Access Keys
@@ -27,27 +28,72 @@ Option 1 – Using AWS Access Keys
 Create a new IAM user in your AWS account with full access to S3.
 
 Download the CSV file containing:
-
 AWS Access Key ID
-
 AWS Secret Access Key
-
 These credentials will be required to create external stages in Snowflake pointing to the S3 bucket.
-
 Recommended Option – Snowflake Storage Integration
 
 A better and more secure approach is to use Snowflake Storage Integration instead of manually using AWS access keys. This avoids exposing credentials and follows best security practices.
 
 4. Creating Stages and Tables in Snowflake
 
-Use the following SQL file to create:
+Use the following SQL file to create:External stages
 
-External stages
-
-Tables for the dataset
-
-File:
-
+Tables for the dataset File:
 snowflake_create_tables.sql
 
 Run this file in Snowflake after completing the prerequisite setup.
+
+5. DBT setup
+post this we need to setup DBT core locally
+pip install dbt-core
+
+# Install the adapter for your data warehouse
+# For Snowflake:
+pip install dbt-snowflake
+
+# For BigQuery:
+pip install dbt-bigquery
+
+# For Redshift:
+pip install dbt-redshift
+
+# For PostgreSQL:
+pip install dbt-postgres
+
+Now create a virtual env in your project folder using these commands:
+cd netflixdbt
+virtualenv venv
+venv\Scripts\activate
+
+then run pip install dbt-snowflake==1.9.0 in venv as we need this specific version
+
+then create root dbt folder which will store all the metadata using this command:
+mkdir ~/.dbt
+
+Now post this run dbt init netflix and choose snowflake as the databse
+and then provide the necessary connection details
+1.account-identifier
+2.user created for this project
+3.password for that role
+4.role created for this project
+5.default warehouse
+6.defult database and schema
+7.number of threads=1 for this project
+
+if you want to change these info later change the profiles.yml file present in your root user folder inside .dbt folder
+
+also install the dbttoolkit pycharm extensions from file>>settings>>plugins
+
+
+6.DBT models
+Is defined in a .sql file
+Contains a single SELECT statement
+Produces a table or view in your data warehouse
+Can reference other models, creating a dependency graph
+
+we keep the raw data as it is,but we create a staging env to replicate the raw data,then do our transformation on staging env
+
+for this first create a .sql file in your models folder inside your project folder ,which in this case is netflix
+and then run 
+dbt run command in the netflix folder
