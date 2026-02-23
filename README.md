@@ -97,3 +97,17 @@ we keep the raw data as it is,but we create a staging env to replicate the raw d
 for this first create a .sql file in your models folder inside your project folder ,which in this case is netflix
 and then run 
 dbt run command in the netflix folder
+
+this will run your tranformations present in your model folder
+these transformation can then become view,table,incremental,ephemeral,material view based on how you want to store your transformation'
+you can configure this indivually for each model/transformation by editing in dbt_project.yml present in netflix folder
+which is our cases looks like:
+
+  netflix:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: view
+as mentioned in here:https://docs.getdbt.com/docs/build/materializations
+
+
+now create more view in your staging env for all the tables present in your dataset
