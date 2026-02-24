@@ -110,4 +110,23 @@ which is our cases looks like:
 as mentioned in here:https://docs.getdbt.com/docs/build/materializations
 
 
-now create more view in your staging env for all the tables present in your dataset
+now create more views in your staging env for all the tables present in your dataset
+
+you can materialize the transformations in this way also:
+models:
+  netflix:
+    +materialized: view
+    dim:
+      +materialized: table
+    fct:
+      +materialized: table
+
+in our netflix project by default materialzation is view unless we mention explicitly,also in the above command see the indentation according to the directory structure
+
+the main usp of dbt models is that you can reference the transformations already used in other env int his way:
+{{ ref('src_movies')}}
+
+if you want to run only one model at a time use this command
+dbt run --model <model_file_name>
+
+also if you change the type of materialization say from view to a table for any model it will delte the view and then create the table just by changing it in the dbt_project.yml
