@@ -151,3 +151,9 @@ this is where dbt helps us by introducing incremental materialization
 see the fct_rating.sql once for comments
 
 next is ephemeral materialization in which running the model itslef will not do any change your database but instead the logic is stored in dbt and can be used in other models
+
+
+next concept is seed ,if you have a csv in you local machine and you want to quickly create a table out of it ,then use the seed tool,just uplod your csv in the seeds folder (and in dbt_project.yml we have already mentinoed that seeds to be picked up from this seeds folder only)
+then just run this command: dbt seed and you will see a table is created 
+
+and also you can reference these seeds into other model like we did in mart
