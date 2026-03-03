@@ -149,3 +149,5 @@ in scd6 which is nothing but combo of 1,2,3 you will have prevvalue,date range +
 following these desing and update table is doable,but what if we have 1000 tables,then we might miss something
 this is where dbt helps us by introducing incremental materialization
 see the fct_rating.sql once for comments
+
+next is ephemeral materialization in which running the model itslef will not do any change your database but instead the logic is stored in dbt and can be used in other models
