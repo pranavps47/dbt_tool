@@ -71,7 +71,7 @@ then run pip install dbt-snowflake==1.9.0 in venv as we need this specific versi
 then create root dbt folder which will store all the metadata using this command:
 mkdir ~/.dbt
 
-Now post this run dbt init netflix and choose snowflake as the databse
+Now post this run dbt init netflix and choose snowflake as the database
 and then provide the necessary connection details
 1.account-identifier
 2.user created for this project
@@ -130,3 +130,22 @@ if you want to run only one model at a time use this command
 dbt run --model <model_file_name>
 
 also if you change the type of materialization say from view to a table for any model it will delte the view and then create the table just by changing it in the dbt_project.yml
+
+note config mentioned inside a model overwrites the configs mentioned in dbt_project.yml
+
+dimensional tables are used as descriptive table ,they are generally smaller than the fact tables,these do not change often (obv like product name,city etc. is almost constant and do not usually change ,so these are called slowly changing dimensions)
+fact tables are more about the quantifiable paramenters like price etc.
+
+
+refer:https://publish.obsidian.md/datavidhya/Course+Notes/Dbt(databuildtool)/7.+Slowly+Changing+Dimensions+(SCD)
+in scd1 we just update the parameter which has to be changed in dimension table without keeping track of what was its previous values
+in scd2 design we keep track of all previous values as well by introducing a new column like is_active and making all its values false for all rows except the latest updated one
+or else just use version as a new column mentioning the  versions of various updates,the highest version is the latest one
+or else use date ranges that is use 2 extra columns like start date and end date , for the latest update /record the end date would be null
+in scd 3 we can just maintain partial history/versions by introducing a new column like prev value so we only have the data of what was the attribute updated from 
+
+in scd6 which is nothing but combo of 1,2,3 you will have prevvalue,date range +isActive
+
+following these desing and update table is doable,but what if we have 1000 tables,then we might miss something
+this is where dbt helps us by introducing incremental materialization
+see the fct_rating.sql once for comments
