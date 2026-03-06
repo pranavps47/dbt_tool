@@ -1,9 +1,8 @@
-WITH raw_movies AS(
-select * from MOVIELENS.RAW.RAW_MOVIES
+WITH raw_movies AS (
+    SELECT * FROM {{ source('netflix', 'r_movies') }}
 )
-
-SELECT movieId as movie_id,
-title,
-genres
-from raw_movies
-
+SELECT
+    movieId AS movie_id,
+    title,
+    genres
+FROM raw_movies
