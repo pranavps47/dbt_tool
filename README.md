@@ -194,3 +194,4 @@ you can also add where clause to your tests so that these only trigger for those
 all your generic test you can place in your project folder inside schema.yml file inside models folder and for custom test paste them under tests folder
 
 
+now to generate documentation just run dbt generate docs and then dbt docs serve to see the docs in ui 
