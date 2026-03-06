@@ -42,3 +42,18 @@ Runtime Error
 [0m23:35:18.754678 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021D1A689790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021D1C92E1F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021D1C92E4C0>]}
 [0m23:35:18.754678 [debug] [MainThread]: Flushing usage events
 [0m23:35:19.722137 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:48:22.221526 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002642CAF8760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002642EDA13D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002642EDA11C0>]}
+
+
+============================== 22:48:22.228999 | a94ff518-486a-4234-a63d-6589a32fbe2e ==============================
+[0m22:48:22.228999 [info ] [MainThread]: Running with dbt=1.10.19
+[0m22:48:22.228999 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'debug': 'False', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'target_path': 'None', 'no_print': 'None', 'version_check': 'True', 'empty': 'False', 'printer_width': '80', 'quiet': 'False', 'introspect': 'True', 'invocation_command': 'dbt run --select src_tags', 'warn_error': 'None', 'write_json': 'True', 'log_path': 'logs', 'log_format': 'default', 'partial_parse': 'True', 'static_parser': 'True', 'profiles_dir': 'C:\\Users\\satya pranav\\.dbt', 'use_experimental_parser': 'False', 'use_colors': 'True', 'indirect_selection': 'eager'}
+[0m22:48:22.228999 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\satya pranav\PycharmProjects\dbt_tool\netflixdbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m22:48:22.228999 [debug] [MainThread]: Command `dbt run` failed at 22:48:22.228999 after 0.13 seconds
+[0m22:48:22.228999 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002642CAF8760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002642EDA11C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002642EDA1490>]}
+[0m22:48:22.228999 [debug] [MainThread]: Flushing usage events
+[0m22:48:23.170270 [debug] [MainThread]: An error was encountered while trying to flush usage events

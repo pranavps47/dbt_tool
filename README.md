@@ -169,3 +169,28 @@ NEXT CONCEPT:snapshots
 this is where scd are even more involved,snapshot is an implementation of scd 2 design .these track the changes in a dimensional table column by adding effective dates
 
 to install the dpendencies /packages mentioned in the packages.yml file just run 'dbt deps' command
+
+
+next conecept is testing where you want test the models before tranformation happens,these tests can error out or just warn also,depending on the severity mentioned
+there are two types of test generic test and custom tests which you write
+
+generic tests include:
+1.unique
+2.not null
+3.Relations between tables
+4.Accepted values
+
+custom test may look like price of a product should always be postive 
+
+"dbt test" to run all tests
+"dbt test --model <name_of_the_model>"
+"dbt test --select test_type:unique"
+"dbt test --select test_name:<name_of_the_Test>"
+
+
+in your test you can also add config like error out if the value is greater than certain value and pass if lower 
+you can also add where clause to your tests so that these only trigger for those specific data
+
+all your generic test you can place in your project folder inside schema.yml file inside models folder and for custom test paste them under tests folder
+
+
