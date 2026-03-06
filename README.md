@@ -157,3 +157,15 @@ next concept is seed ,if you have a csv in you local machine and you want to qui
 then just run this command: dbt seed and you will see a table is created 
 
 and also you can reference these seeds into other model like we did in mart
+
+
+next concept is sources this is mainly useful for documentation ,creting lias for your raw/staging tables and are also useful for tests and checking the freshness of source data
+this will be created in sources.yml in models folder
+
+here is the link:https://publish.obsidian.md/datavidhya/Course+Notes/Dbt(databuildtool)/6.+Seeds+and+Sources
+
+NEXT CONCEPT:snapshots
+
+this is where scd are even more involved,snapshot is an implementation of scd 2 design .these track the changes in a dimensional table column by adding effective dates
+
+to install the dpendencies /packages mentioned in the packages.yml file just run 'dbt deps' command
