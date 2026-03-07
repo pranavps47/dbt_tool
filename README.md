@@ -195,3 +195,9 @@ all your generic test you can place in your project folder inside schema.yml fil
 
 
 now to generate documentation just run dbt generate docs and then dbt docs serve to see the docs in ui 
+
+next conecpt is :macros ,similar to functions in programming language these are also functions which take some parameters as input and return the output
+
+you can create macros in the macros folder with .sql name
+
+till all the keywords like ref,source,config etc all are nothing but macros 
